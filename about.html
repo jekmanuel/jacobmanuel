@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | DevPortfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* About Page Specific Styles */
+        .about-page {
+            padding-top: 100px;
+        }
+
+        .page-divider {
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: 80px auto;
+            opacity: 0.3;
+        }
+
+        .dark-mode .page-divider {
+            background: linear-gradient(90deg, transparent, , transparent);
+        }
+
+        /* Section 1: Introduction */
+        .intro-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .intro-image {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .intro-content {
+            padding: 40px;
+        }
+
+        .intro-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .intro-tagline {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .dark-mode .intro-tagline {
+            color: var(--accent-ui);
+        }
+
+        .intro-text {
+            color: var(--secondary-color);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Section 2: My Journey - FIXED */
+        .journey-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .journey-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto 0;
+            padding: 20px 0;
+        }
+
+        /* Vertical line - FIXED POSITION */
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    var(--accent-color) 10%,
+                    var(--accent-color) 90%,
+                    transparent 100%);
+            transform: translateX(-50%);
+            opacity: 0.3;
+        }
+
+        .dark-mode .journey-timeline::before {
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    var(--accent-color) 10%,
+                    var(--accent-color) 90%,
+                    transparent 100%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            position: relative;
+            min-height: 150px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Alternate sides for timeline items */
+        .timeline-item:nth-child(odd) .timeline-content {
+            order: 1;
+            margin-right: 60px;
+            margin-left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            order: 3;
+            margin-left: 60px;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        /* Center dot connector - FIXED POSITION */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .timeline-item::after {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .timeline-item:hover::after {
+            transform: translate(-50%, -50%) scale(1.3);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        .dark-mode .timeline-item:hover::after {
+            box-shadow: 0 0 20px var(--bg-color);
+        }
+
+        /* Year indicator - FIXED POSITION */
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--accent-color);
+            color: var(--bg-color);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            z-index: 3;
+            white-space: nowrap;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .timeline-year {
+            background: var(--accent-color);
+            color: #121212;
+        }
+
+        /* Timeline content - FIXED WIDTH */
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-mode .timeline-content:hover {
+            box-shadow: 0 15px 30px rgba(188, 188, 188, 0.1);
+        }
+
+        /* Arrow pointers */
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        /* Left side arrows */
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -10px;
+            border-right: none;
+            border-top: none;
+        }
+
+        /* Right side arrows */
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .timeline-description {
+            color: var(--secondary-color);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .timeline-icon {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            display: inline-block;
+        }
+
+        .dark-mode .timeline-icon {
+            color: #fff;
+        }
+
+        /* Empty space for opposite side (for visual balance) */
+        .timeline-spacer {
+            width: 45%;
+            visibility: hidden;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-spacer {
+            order: 3;
+        }
+
+        .timeline-item:nth-child(even) .timeline-spacer {
+            order: 1;
+        }
+
+        /* Responsive Design for Journey Section */
+        @media (max-width: 992px) {
+            .journey-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 60px;
+                margin-left: 60px;
+                min-height: auto;
+            }
+
+            .timeline-item::after {
+                left: -45px;
+                top: 30px;
+                transform: translate(0, 0);
+            }
+
+            .timeline-year {
+                left: -45px;
+                top: 30px;
+                transform: translate(0, 0);
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+                text-align: left !important;
+                order: 2 !important;
+            }
+
+            .timeline-content::before {
+                left: -10px !important;
+                right: auto !important;
+                top: 30px;
+                transform: translateY(-50%) rotate(45deg);
+                border-left: none;
+                border-bottom: none;
+            }
+
+            .timeline-spacer {
+                display: none;
+            }
+
+
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -10px !important;
+                right: auto !important;
+                border-left: none;
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .journey-section {
+                padding: 80px 20px;
+            }
+
+            .journey-timeline {
+                margin-top: 40px;
+            }
+
+            .timeline-item {
+                margin-left: 40px;
+            }
+
+            .timeline-item::after {
+                left: -30px;
+                width: 16px;
+                height: 16px;
+            }
+
+            .timeline-year {
+                left: -30px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
+                min-width: 70px;
+            }
+
+            .timeline-content {
+                padding: 25px 20px;
+            }
+
+            .timeline-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .journey-timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                margin-left: 30px;
+            }
+
+            .timeline-item::after {
+                left: -25px;
+            }
+
+            .timeline-year {
+                left: -25px;
+            }
+
+            .timeline-content {
+                padding: 20px 15px;
+            }
+
+            .timeline-content::before {
+                left: -8px !important;
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* Section 3: My Philosophy */
+        .philosophy-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .philosophy-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .philosophy-card {
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .philosophy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .dark-mode .philosophy-icon {
+            color: var(--accent-ui);
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .philosophy-card p {
+            color: var(--secondary-color);
+            line-height: 1.6;
+        }
+
+        /* Section 4: Personal Interests */
+        .interests-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .interest-card {
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .interest-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .dark-mode .interest-icon {
+            color: var(--accent-ui);
+        }
+
+        .interest-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .interest-description {
+            color: var(--secondary-color);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .interest-images {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .interest-images img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .interest-images img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Section 5: Skills & Expertise */
+        .skills-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .skill-percent {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .dark-mode .skill-percent {
+            color: var(--accent-ui);
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dark-mode .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 4px;
+            width: 0;
+            animation: fillBar 1.5s ease forwards;
+        }
+
+
+
+        @keyframes fillBar {
+            to {
+                width: var(--target-width);
+            }
+        }
+
+        /* Section 6: How Interests Influence Work */
+        .influence-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .influence-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .influence-card {
+            padding: 40px 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .influence-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .influence-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .influence-card:hover .influence-icon {
+            transform: scale(1.2);
+        }
+
+        .dark-mode .influence-icon {
+            color: var(--accent-ui);
+        }
+
+        .influence-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .influence-description {
+            color: var(--secondary-color);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .influence-impact {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .influence-impact li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .influence-impact li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .dark-mode .influence-impact li::before {
+            color: var(--accent-ui);
+        }
+
+        /* Section 7: Connect With Me */
+        .connect-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .connect-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 20px;
+        }
+
+        .connect-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Back to Home */
+        .back-to-home {
+            text-align: center;
+            margin: 80px 0 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .intro-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .intro-image {
+                height: 400px;
+            }
+
+            .journey-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                margin-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                text-align: left !important;
+            }
+
+            .timeline-year {
+                left: 0;
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .intro-section,
+            .journey-section,
+            .philosophy-section,
+            .interests-section,
+            .skills-section,
+            .influence-section,
+            .connect-section {
+                padding: 80px 20px;
+            }
+
+            .intro-content h2 {
+                font-size: 2rem;
+            }
+
+            .philosophy-cards,
+            .interests-grid,
+            .skills-container,
+            .influence-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .connect-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .connect-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro-image {
+                height: 300px;
+            }
+
+            .interest-images img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .timeline-item {
+                margin-left: 40px;
+            }
+
+            .intro-content,
+            .timeline-content,
+            .philosophy-card,
+            .interest-card,
+            .influence-card {
+                padding: 25px 20px;
+            }
+        }
+
+        /* Animation for page load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-content {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <!-- Logo and Site Name -->
+            <a href="index.html" class="logo">
+                <div class="logo-wrapper">
+                    <div class="logo-icon">
+                        <img src="assets/logo-circle-no-bg.png" alt="logo">
+                    </div>
+                </div>
+            </a>
+
+            <div class="nav-center-container">
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link ">Home</a></li>
+                    <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                    <li><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li class="separator"></li>
+                    <li><a href="index.html#contact" class="nav-link contact-nav">Contact</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Desktop Theme Switch -->
+            <div class="theme-switch-wrapper">
+                <span class="theme-icon">⏾</span>
+                <label class="theme-switch" for="theme-checkbox">
+                    <input type="checkbox" id="theme-checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span class="theme-icon">☀︎</span>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+    </nav>
+
+    <!-- About Page Content -->
+    <main class="about-page">
+        <!-- Section 1: Introduction -->
+        <section id="intro" class="intro-section">
+            <div class="section-header">
+                <h1 class="section-title">About <span class="highlight">Me</span></h1>
+                <p class="section-subtitle">Developer. Designer. Problem Solver.</p>
+            </div>
+
+            <div class="intro-container section-content">
+                <div class="intro-image glass">
+                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
+                        alt="Alex Morgan - Web Developer">
+                </div>
+                <div class="intro-content glass">
+                    <h2>Jacob Manuel</h2>
+                    <span class="intro-tagline">Full Stack Web Developer</span>
+                    <p class="intro-text">
+                        With years of experience in web development, I specialize in creating beautiful,
+                        functional, and user-centered digital experiences. My passion lies in transforming complex
+                        problems into simple, elegant solutions.
+                    </p>
+                    <p class="intro-text">
+                        I believe in the power of technology to make a positive impact, and I'm dedicated to building
+                        applications that not only look great but also solve real-world problems effectively.
+                    </p>
+                    <div class="intro-stats">
+                        <div style="display: flex; gap: 30px; margin-top: 30px; flex-wrap: wrap;">
+                            <!-- <div>
+                                <h3 style="font-size: 2rem; color: var(--accent-color); margin-bottom: 5px;">50+</h3>
+                                <p style="color: var(--secondary-color); font-size: 0.9rem;">Projects Completed</p>
+                            </div> -->
+                            <div>
+                                <h3 style="font-size: 2rem; color: var(--accent-color); margin-bottom: 5px;">5+</h3>
+                                <p style="color: var(--secondary-color); font-size: 0.9rem;">Years Experience</p>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 2rem; color: var(--accent-color); margin-bottom: 5px;">100%</h3>
+                                <p style="color: var(--secondary-color); font-size: 0.9rem;">Client Satisfaction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-divider"></div>
+
+        <!-- Section 2: My Journey -->
+        <section id="journey" class="journey-section">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="highlight">Journey</span></h2>
+                <p class="section-subtitle">From curiosity to career: The path that shaped me</p>
+            </div>
+
+            <div class="journey-timeline section-content">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-spacer"></div>
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content glass">
+                        <div class="timeline-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="timeline-title">The Beginning</h3>
+                        <p class="timeline-description">
+                            Started learning web development fundamentals while working as a graphic designer. Built my
+                            first website using HTML, CSS, and JavaScript.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-content glass">
+                        <div class="timeline-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="timeline-title">First Professional Role</h3>
+                        <p class="timeline-description">
+                            Landed my first web developer position at a digital agency. Worked on various client
+                            projects and deepened my understanding of frontend development.
+                        </p>
+                    </div>
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-spacer"></div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-spacer"></div>
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content glass">
+                        <div class="timeline-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="timeline-title">Full Stack Transition</h3>
+                        <p class="timeline-description">
+                            Expanded skills to include backend development with Node.js and databases. Started
+                            freelancing to build a diverse portfolio.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-content glass">
+                        <div class="timeline-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="timeline-title">Specialization</h3>
+                        <p class="timeline-description">
+                            Focused on React ecosystem and modern web technologies. Started mentoring junior developers
+                            and contributing to open-source projects.
+                        </p>
+                    </div>
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-spacer"></div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-spacer"></div>
+                    <div class="timeline-year">2023 - Present</div>
+                    <div class="timeline-content glass">
+                        <div class="timeline-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="timeline-title">Independent Development</h3>
+                        <p class="timeline-description">
+                            Working as an independent developer and consultant, helping businesses transform their
+                            digital presence with modern web solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-divider"></div>
+
+        <!-- Section 3: My Philosophy -->
+        <section id="philosophy" class="philosophy-section">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="highlight">Philosophy</span></h2>
+                <p class="section-subtitle">The principles that guide my work</p>
+            </div>
+
+            <div class="philosophy-cards section-content">
+                <div class="philosophy-card glass">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>User-Centric Design</h3>
+                    <p>Every design decision starts with the user. I create interfaces that are not only beautiful but
+                        also intuitive and accessible to everyone.</p>
+                </div>
+
+                <div class="philosophy-card glass">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Clean Code</h3>
+                    <p>I believe in writing code that's clean, maintainable, and scalable. Good code should be easy to
+                        read, understand, and modify.</p>
+                </div>
+
+                <div class="philosophy-card glass">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Continuous Learning</h3>
+                    <p>The tech world evolves rapidly. I'm committed to constantly learning and adapting to new
+                        technologies and methodologies.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-divider"></div>
+
+        <!-- Section 4: Personal Interests -->
+        <section id="interests" class="interests-section">
+            <div class="section-header">
+                <h2 class="section-title">Personal <span class="highlight">Interests</span></h2>
+                <p class="section-subtitle">Life beyond the screen</p>
+            </div>
+
+            <div class="interests-grid section-content">
+                <div class="interest-card glass">
+                    <div class="interest-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="interest-title">Hiking</h3>
+                    <p class="interest-description">
+                        Exploring nature trails and mountains helps me clear my mind and find inspiration. The challenge
+                        of reaching new heights mirrors problem-solving in coding.
+                    </p>
+                    <div class="interest-images">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            alt="Hiking">
+                        <img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1773&q=80"
+                            alt="Mountain view">
+                    </div>
+                </div>
+
+                <div class="interest-card glass">
+                    <div class="interest-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3 class="interest-title">Traveling</h3>
+                    <p class="interest-description">
+                        Experiencing different cultures and architectures provides endless inspiration for design and
+                        problem-solving approaches.
+                    </p>
+                    <div class="interest-images">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"
+                            alt="Travel">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            alt="City travel">
+                    </div>
+                </div>
+
+                <div class="interest-card glass">
+                    <div class="interest-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="interest-title">Music</h3>
+                    <p class="interest-description">
+                        Playing guitar and piano teaches me about rhythm, structure, and creativity - principles that
+                        translate directly to coding and design.
+                    </p>
+                    <div class="interest-images">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            alt="Music">
+                        <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            alt="Guitar">
+                    </div>
+                </div>
+
+                <div class="interest-card glass">
+                    <div class="interest-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="interest-title">Photography</h3>
+                    <p class="interest-description">
+                        Capturing moments through photography has trained my eye for composition, lighting, and
+                        storytelling in web design.
+                    </p>
+                    <div class="interest-images">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1752&q=80"
+                            alt="Photography">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            alt="Camera">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-divider"></div>
+
+        <!-- Section 5: Skills & Expertise -->
+        <section id="skills" class="skills-section">
+            <div class="section-header">
+                <h2 class="section-title">Skills & <span class="highlight">Expertise</span></h2>
+                <p class="section-subtitle">Technical proficiencies and capabilities</p>
+            </div>
+
+            <div class="skills-container section-content">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">HTML/CSS</span>
+                            <span class="skill-percent">98%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 98%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">React.js</span>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Vue.js</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Node.js</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Express.js</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">MongoDB</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">PostgreSQL</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Design & Tools</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">UI/UX Design</span>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Figma</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Git/GitHub</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Web Performance</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--target-width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-divider"></div>
+
+        <!-- Section 6: How Interests Influence Work -->
+        <section id="influence" class="influence-section">
+            <div class="section-header">
+                <h2 class="section-title">How Interests <span class="highlight">Influence</span> Work</h2>
+                <p class="section-subtitle">The synergy between personal passions and professional excellence</p>
+            </div>
+
+            <div class="influence-container section-content">
+                <div class="influence-card glass">
+                    <div class="influence-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="influence-title">Hiking → Problem Solving</h3>
+                    <p class="influence-description">
+                        Every hike teaches perseverance and step-by-step progress. Complex coding projects require the
+                        same approach.
+                    </p>
+                    <ul class="influence-impact">
+                        <li>Methodical approach to complex problems</li>
+                        <li>Persistence through challenging tasks</li>
+                        <li>Breaking projects into achievable milestones</li>
+                        <li>Celebrating small wins along the way</li>
+                    </ul>
+                </div>
+
+                <div class="influence-card glass">
+                    <div class="influence-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3 class="influence-title">Traveling → UX Design</h3>
+                    <p class="influence-description">
+                        Experiencing different cultures teaches about diverse user perspectives and accessibility.
+                    </p>
+                    <ul class="influence-impact">
+                        <li>Cultural awareness in design decisions</li>
+                        <li>Global perspective on user needs</li>
+                        <li>Adaptability to different user scenarios</li>
+                        <li>Storytelling through user interfaces</li>
+                    </ul>
+                </div>
+
+                <div class="influence-card glass">
+                    <div class="influence-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="influence-title">Music → Code Rhythm</h3>
+                    <p class="influence-description">
+                        Music teaches rhythm, harmony, and structure - principles that create clean, flowing code.
+                    </p>
+                    <ul class="influence-impact">
+                        <li>Clean, rhythmic code structure</li>
+                        <li>Attention to flow and interaction timing</li>
+                        <li>Creative problem-solving approaches</li>
+                        <li>Balancing aesthetics with functionality</li>
+                    </ul>
+                </div>
+
+                <div class="influence-card glass">
+                    <div class="influence-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="influence-title">Photography → Visual Design</h3>
+                    <p class="influence-description">
+                        Photography trains the eye for composition, lighting, and visual storytelling in web design.
+                    </p>
+                    <ul class="influence-impact">
+                        <li>Eye for visual composition and balance</li>
+                        <li>Attention to detail in UI elements</li>
+                        <li>Understanding of visual hierarchy</li>
+                        <li>Storytelling through visual design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-footer" style="text-align: center; margin-top: 60px;">
+                <div class="glass" style="padding: 40px; max-width: 800px; margin: 0 auto;">
+                    <h3 style="margin-bottom: 20px;">The Holistic Developer</h3>
+                    <p style="color: var(--secondary-color); line-height: 1.7;">
+                        My diverse interests don't just make me a more well-rounded person - they make me a better
+                        developer.
+                        Each passion brings unique insights and skills that enhance my technical abilities, allowing me
+                        to
+                        create solutions that are functional, intuitive, and meaningful.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-divider"></div>
+
+        <!-- Section 7: Connect With Me -->
+        <section id="connect" class="connect-section">
+            <div class="section-header">
+                <h2 class="section-title">Let's <span class="highlight">Connect</span></h2>
+                <p class="section-subtitle">Ready to bring your ideas to life?</p>
+            </div>
+
+            <div class="connect-content glass section-content">
+                <h3 style="margin-bottom: 20px;">Get In Touch</h3>
+                <p style="color: var(--secondary-color); margin-bottom: 30px; line-height: 1.6;">
+                    Whether you have a project in mind, want to collaborate, or just want to chat about technology and
+                    design,
+                    I'd love to hear from you. Let's create something amazing together.
+                </p>
+
+                <div class="connect-buttons">
+                    <a href="index.html#contact" class="btn primary-btn">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                    <a href="projects.html" class="btn outline-btn">
+                        <i class="fas fa-briefcase"></i> View My Work
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="back-to-home">
+            <a href="index.html" class="btn outline-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- <footer class="footer glass">
+        <p>All rights reserved &copy; 2025 - Designed by Jacob Manuel</p>
+    </footer> -->
+
+    <footer class="footer glass">
+        <div class="container">
+            <p>© 2024 Jacob Manuel. All rights reserved. | Designed & Developed with ♡</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">
+                <a href="mailto:jacobmanuel.website@gmail.com"
+                    style="color: var(--primary-color); text-decoration: none;">
+                    jacobmanuel.website@gmail.com
+                </a> |
+                <a href="tel:+1234567890" style="color: var(--primary-color); text-decoration: none;">
+                    +1 234 567 890
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Reuse the same JavaScript functionality from main page
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theme toggle
+            const themeSwitch = document.getElementById('theme-checkbox');
+            const body = document.body;
+
+            // Initialize theme
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                body.classList.add('dark-mode');
+                themeSwitch.checked = true;
+            }
+
+            themeSwitch.addEventListener('change', function () {
+                if (this.checked) {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('darkMode', 'true');
+                } else {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('darkMode', 'false');
+                }
+            });
+
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            hamburger.addEventListener('click', function () {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Animate elements on scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.section-content');
+
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+
+                    if (elementTop < window.innerHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+
+            // Set initial state for animation
+            document.querySelectorAll('.section-content').forEach(content => {
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(20px)';
+                content.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+
+            // Animate skill bars
+            function animateSkills() {
+                const skillBars = document.querySelectorAll('.skill-progress');
+
+                skillBars.forEach(bar => {
+                    const targetWidth = getComputedStyle(bar).getPropertyValue('--target-width');
+                    bar.style.width = targetWidth;
+                });
+            }
+
+            window.addEventListener('scroll', () => {
+                animateOnScroll();
+                animateSkills();
+            });
+
+            // Initial animations
+            animateOnScroll();
+            setTimeout(animateSkills, 500);
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    if (href === '#') return;
+
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        e.preventDefault();
+
+                        // Close mobile menu if open
+                        if (window.innerWidth <= 992) {
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

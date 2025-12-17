@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Manuel | Projects Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light Mode Colors */
+            --bg-color: #f0f2f5;
+            --text-color: #333333;
+            --primary-color: #4a4a4a;
+            --secondary-color: #7a7a7a;
+            --accent-color: #2c2c2c;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --transition: all 0.3s ease;
+            --container-padding: 2rem;
+            --section-spacing: 4rem;
+            --card-spacing: 1.5rem;
+        }
+
+        .dark-mode {
+            /* Dark Mode Colors */
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --primary-color: #e0e0e0;
+            --secondary-color: #b0b0b0;
+            --accent-color: #ffffff;
+            --glass-bg: rgba(0, 0, 0, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --card-bg: rgba(30, 30, 30, 0.7);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Container Styles */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+
+        /* Header Section with Circles Animation */
+        .page-header {
+            padding: 180px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: var(--section-spacing);
+            background: linear-gradient(135deg,
+                    rgba(44, 44, 44, 0.05) 0%,
+                    rgba(42, 42, 42, 0.08) 50%,
+                    rgba(44, 44, 44, 0.05) 100%);
+        }
+
+        .dark-mode .page-header {
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.02) 0%,
+                    rgba(255, 255, 255, 0.04) 50%,
+                    rgba(255, 255, 255, 0.02) 100%);
+        }
+
+        /* Circles Animation Container */
+        .circles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Individual Circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            mix-blend-mode: overlay;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        .dark-mode .circle {
+            opacity: 0.15;
+            mix-blend-mode: screen;
+        }
+
+        /* Circle Sizes and Positions */
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            animation: floatCircle1 20s infinite alternate;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 15%;
+            right: 10%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            animation: floatCircle2 25s infinite alternate;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            right: 20%;
+            background: linear-gradient(225deg, var(--accent-color), var(--primary-color));
+            animation: floatCircle3 18s infinite alternate;
+        }
+
+        .circle-4 {
+            width: 250px;
+            height: 250px;
+            bottom: 25%;
+            left: 15%;
+            background: linear-gradient(315deg, var(--primary-color), var(--accent-color));
+            animation: floatCircle4 22s infinite alternate;
+        }
+
+        .circle-5 {
+            width: 180px;
+            height: 180px;
+            top: 60%;
+            left: 25%;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            animation: floatCircle5 30s infinite alternate;
+        }
+
+        .circle-6 {
+            width: 120px;
+            height: 120px;
+            top: 20%;
+            right: 30%;
+            background: linear-gradient(270deg, var(--primary-color), var(--accent-color));
+            animation: floatCircle6 16s infinite alternate;
+        }
+
+        /* Pulsating Circles */
+        .circle-pulse {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(44, 44, 44, 0.1);
+            animation: pulse 4s infinite;
+        }
+
+        .dark-mode .circle-pulse {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .pulse-1 {
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 0s;
+        }
+
+        .pulse-2 {
+            width: 500px;
+            height: 500px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 1s;
+        }
+
+        .pulse-3 {
+            width: 600px;
+            height: 600px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 2s;
+        }
+
+        /* Circle Animations */
+        @keyframes floatCircle1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            33% {
+                transform: translate(30px, -40px) rotate(120deg);
+                opacity: 0.15;
+            }
+
+            66% {
+                transform: translate(-20px, 30px) rotate(240deg);
+                opacity: 0.08;
+            }
+        }
+
+        @keyframes floatCircle2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            33% {
+                transform: translate(-40px, 20px) rotate(-120deg);
+                opacity: 0.15;
+            }
+
+            66% {
+                transform: translate(30px, -30px) rotate(-240deg);
+                opacity: 0.08;
+            }
+        }
+
+        @keyframes floatCircle3 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: translate(25px, 25px) rotate(180deg);
+                opacity: 0.15;
+            }
+        }
+
+        @keyframes floatCircle4 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            33% {
+                transform: translate(-30px, -20px) rotate(90deg);
+                opacity: 0.15;
+            }
+
+            66% {
+                transform: translate(20px, -30px) rotate(180deg);
+                opacity: 0.08;
+            }
+        }
+
+        @keyframes floatCircle5 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: translate(-25px, 15px) rotate(360deg);
+                opacity: 0.15;
+            }
+        }
+
+        @keyframes floatCircle6 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            33% {
+                transform: translate(15px, -25px) rotate(120deg);
+                opacity: 0.15;
+            }
+
+            66% {
+                transform: translate(-15px, 25px) rotate(240deg);
+                opacity: 0.08;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.05;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0.1;
+            }
+        }
+
+        /* Header Content */
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .dark-mode .page-title {
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-subtitle {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Glass Sphere Effect */
+        .glass-sphere {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%,
+                    rgba(255, 255, 255, 0.3),
+                    rgba(255, 255, 255, 0.1));
+            filter: blur(5px);
+            animation: floatSphere 15s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        .dark-mode .glass-sphere {
+            background: radial-gradient(circle at 30% 30%,
+                    rgba(255, 255, 255, 0.2),
+                    rgba(255, 255, 255, 0.05));
+        }
+
+        .sphere-1 {
+            top: 20%;
+            right: 15%;
+            animation-delay: 0s;
+        }
+
+        .sphere-2 {
+            bottom: 30%;
+            left: 10%;
+            animation-delay: 5s;
+        }
+
+        .sphere-3 {
+            top: 60%;
+            right: 25%;
+            animation-delay: 10s;
+        }
+
+        @keyframes floatSphere {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+
+            25% {
+                transform: translate(30px, -20px) scale(1.1);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translate(-20px, 30px) scale(0.9);
+                opacity: 0.2;
+            }
+
+            75% {
+                transform: translate(-30px, -10px) scale(1.05);
+                opacity: 0.35;
+            }
+        }
+
+        /* Project Filters */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            border: 1px solid var(--accent-color);
+            background-color: transparent;
+            color: var(--accent-color);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 10px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, 15px);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design for Header */
+        @media (max-width: 992px) {
+            .page-header {
+                padding: 150px 0 60px;
+                min-height: 90vh;
+            }
+
+            .page-title {
+                font-size: 3rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .circle-1,
+            .circle-4 {
+                width: 200px;
+                height: 200px;
+            }
+
+            .circle-2,
+            .circle-3,
+            .circle-5,
+            .circle-6 {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 120px 0 40px;
+                min-height: 80vh;
+                border-radius: 0 0 30px 30px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+
+            .header-content {
+                padding: 30px 20px;
+            }
+
+            .project-filters {
+                gap: 8px;
+                margin-top: 20px;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .circle {
+                display: none;
+            }
+
+            .circle-1,
+            .circle-2 {
+                display: block;
+                width: 150px;
+                height: 150px;
+            }
+
+            .glass-sphere {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 100px 0 30px;
+                min-height: 70vh;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .project-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 200px;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+
+            .circle,
+            .circle-pulse,
+            .glass-sphere,
+            .scroll-indicator,
+            .filter-btn,
+            .header-content {
+                animation: none !important;
+            }
+        }
+
+        /* Rest of your existing CSS remains the same... */
+        /* Glassmorphism Effect */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 16px;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-color);
+            opacity: 0.3;
+            border-radius: 2px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            gap: 8px;
+        }
+
+        .primary-btn {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .outline-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .outline-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed !important;
+            top: 20px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 90% !important;
+            max-width: 1200px !important;
+            z-index: 1000 !important;
+            padding: 15px 30px !important;
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 1px solid var(--glass-border) !important;
+            box-shadow: var(--glass-shadow) !important;
+            border-radius: 16px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+            flex: 0 0 auto;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-highlight {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            padding: 8px 16px;
+            transition: var(--transition);
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+        .nav-link.active {
+            color: var(--text-color) !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--text-color);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 20px;
+        }
+
+        /* Theme Switch */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--bg-color);
+            transition: var(--transition);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(30px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        .theme-icon {
+            font-size: 18px;
+            opacity: 0.7;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-color);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        /* Projects Grid - Columns Layout */
+        .projects-grid {
+            padding: 40px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: var(--section-spacing);
+        }
+
+        /* Project Card - Grid View */
+        .project-card {
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease;
+            padding: 0;
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 6px 15px;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            color: var(--bg-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-header {
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Tech Stack Compact */
+        .tech-stack-compact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .tech-badge-small {
+            padding: 4px 12px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--text-color);
+        }
+
+        /* View Details Button */
+        .view-details-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .view-details-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Popup - Single Column */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            animation: slideUp 0.4s ease;
+            padding: 0;
+            margin: 20px;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 30px 30px 20px;
+            border-bottom: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            padding-right: 40px;
+        }
+
+        .modal-subtitle {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        /* Single Column Modal Body */
+        .modal-body {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .modal-image-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .modal-main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .modal-image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+            padding: 0;
+        }
+
+        .gallery-thumb {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-thumb:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        .modal-section {
+            padding: 20px;
+            border-radius: 12px;
+            margin: 0;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-color);
+        }
+
+        .tech-stack-modal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-badge-modal {
+            padding: 8px 18px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Outcome Metrics */
+        .outcome-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+
+        /* Modal Actions */
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .modal-live-link,
+        .modal-github-link {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            margin-top: var(--section-spacing);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer p {
+            color: var(--secondary-color);
+        }
+
+        /* Back to Home */
+        .back-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            padding: 0;
+            margin: 0;
+        }
+
+        .back-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+
+            .container {
+                padding: var(--container-padding) 1.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--card-bg);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                transition: left 0.5s ease;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10px;
+            }
+
+            .container {
+                padding: var(--container-padding) 1rem;
+            }
+
+            :root {
+                --container-padding: 1.5rem;
+                --section-spacing: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--container-padding) 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+                padding: 20px 0;
+            }
+
+            .project-image-container {
+                height: 200px;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 95vh;
+                margin: 10px;
+            }
+
+            .modal-header {
+                padding: 20px;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+                padding-right: 30px;
+            }
+
+            .modal-body {
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .modal-main-image {
+                height: 250px;
+            }
+
+            .modal-image-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-filters {
+                padding: 0 10px;
+                margin-bottom: 30px;
+            }
+
+            :root {
+                --container-padding: 1rem;
+                --section-spacing: 2rem;
+                --card-spacing: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .project-card {
+                max-width: 100%;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .outcome-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-main-image {
+                height: 200px;
+            }
+
+            .modal-header {
+                padding: 15px;
+            }
+
+            .modal-body {
+                padding: 15px;
+            }
+
+            .modal-section {
+                padding: 15px;
+            }
+
+            .project-content {
+                padding: 15px;
+            }
+
+            .container {
+                padding: var(--container-padding) 0.75rem;
+            }
+        }
+
+        /* Additional spacing improvements */
+        .project-filters {
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .projects-grid {
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .modal-content {
+            margin: 20px auto;
+        }
+
+        /* Ensure proper spacing between elements */
+        .page-header .container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Fix for mobile viewport */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <!-- Logo and Site Name -->
+            <a href="index.html" class="logo">
+                <div class="logo-wrapper">
+                    <div class="logo-icon">
+                        <img src="assets/logo-circle-no-bg.png" alt="logo">
+                    </div>
+                </div>
+            </a>
+
+            <div class="nav-center-container">
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link ">Home</a></li>
+                    <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="separator"></li>
+                    <li><a href="index.html#contact" class="nav-link contact-nav">Contact</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Desktop Theme Switch -->
+            <div class="theme-switch-wrapper">
+                <span class="theme-icon">⏾</span>
+                <label class="theme-switch" for="theme-checkbox">
+                    <input type="checkbox" id="theme-checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span class="theme-icon">☀︎</span>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+    </nav>
+
+    <!-- Page Header with Circles Animation -->
+    <header class="page-header">
+        <!-- Circles Animation Background -->
+        <div class="circles-container">
+            <!-- Main Floating Circles -->
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+            <div class="circle circle-4"></div>
+            <div class="circle circle-5"></div>
+            <div class="circle circle-6"></div>
+
+            <!-- Pulsating Center Circles -->
+            <div class="circle-pulse pulse-1"></div>
+            <div class="circle-pulse pulse-2"></div>
+            <div class="circle-pulse pulse-3"></div>
+
+            <!-- Glass Spheres -->
+            <div class="glass-sphere sphere-1"></div>
+            <div class="glass-sphere sphere-2"></div>
+            <div class="glass-sphere sphere-3"></div>
+        </div>
+
+        <div class="container">
+            <div class="header-content glass">
+                <h1 class="page-title">Project Portfolio</h1>
+                <p class="page-subtitle">Browse my featured projects showcasing innovative solutions, technical
+                    expertise, and measurable outcomes. Click any project to view detailed case studies.</p>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" data-filter="backend">Backend</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Projects Grid -->
+    <main class="container">
+        <div class="projects-grid">
+            <!-- Project 1: E-commerce Platform -->
+            <div class="project-card glass" data-category="fullstack ecommerce" data-project="1">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"
+                        alt="E-commerce Dashboard" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Featured</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Modern E-commerce Platform</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item"><i class="far fa-calendar"></i> 2024</span>
+                            <span class="project-meta-item"><i class="far fa-clock"></i> 3 Months</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Comprehensive e-commerce solution with real-time inventory management, secure payments, and AI
+                        recommendations.
+                    </p>
+                    <div class="tech-stack-compact">
+                        <span class="tech-badge-small">React</span>
+                        <span class="tech-badge-small">Node.js</span>
+                        <span class="tech-badge-small">MongoDB</span>
+                        <span class="tech-badge-small">AWS</span>
+                    </div>
+                    <button class="view-details-btn">
+                        <i class="fas fa-search"></i> View Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 2: Fitness App -->
+            <div class="project-card glass" data-category="fullstack frontend" data-project="2">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"
+                        alt="Fitness App Dashboard" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Mobile App</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">AI Fitness Platform</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item"><i class="far fa-calendar"></i> 2024</span>
+                            <span class="project-meta-item"><i class="far fa-clock"></i> 4 Months</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Personalized fitness app using machine learning for custom workout plans and real-time form
+                        correction.
+                    </p>
+                    <div class="tech-stack-compact">
+                        <span class="tech-badge-small">React Native</span>
+                        <span class="tech-badge-small">TensorFlow.js</span>
+                        <span class="tech-badge-small">Firebase</span>
+                        <span class="tech-badge-small">D3.js</span>
+                    </div>
+                    <button class="view-details-btn">
+                        <i class="fas fa-search"></i> View Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 3: Financial Dashboard -->
+            <div class="project-card glass" data-category="frontend backend" data-project="3">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"
+                        alt="Financial Analytics Dashboard" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Enterprise</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Financial Analytics Dashboard</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item"><i class="far fa-calendar"></i> 2023</span>
+                            <span class="project-meta-item"><i class="far fa-clock"></i> 2 Months</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Real-time financial dashboard for market monitoring, automated reports, and interactive data
+                        visualization.
+                    </p>
+                    <div class="tech-stack-compact">
+                        <span class="tech-badge-small">Vue.js</span>
+                        <span class="tech-badge-small">FastAPI</span>
+                        <span class="tech-badge-small">PostgreSQL</span>
+                        <span class="tech-badge-small">Chart.js</span>
+                    </div>
+                    <button class="view-details-btn">
+                        <i class="fas fa-search"></i> View Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 4: Project Management -->
+            <div class="project-card glass" data-category="fullstack backend" data-project="4">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"
+                        alt="Project Management Interface" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">SaaS</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Project Management Platform</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item"><i class="far fa-calendar"></i> 2023</span>
+                            <span class="project-meta-item"><i class="far fa-clock"></i> 5 Months</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Collaborative project management tool with Gantt charts, time tracking, and GitHub/JIRA
+                        integrations.
+                    </p>
+                    <div class="tech-stack-compact">
+                        <span class="tech-badge-small">Angular</span>
+                        <span class="tech-badge-small">Express.js</span>
+                        <span class="tech-badge-small">MySQL</span>
+                        <span class="tech-badge-small">Socket.io</span>
+                    </div>
+                    <button class="view-details-btn">
+                        <i class="fas fa-search"></i> View Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 5: Healthcare Portal -->
+            <div class="project-card glass" data-category="fullstack frontend" data-project="5">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"
+                        alt="Healthcare Portal" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Healthcare</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Telemedicine Platform</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item"><i class="far fa-calendar"></i> 2023</span>
+                            <span class="project-meta-item"><i class="far fa-clock"></i> 6 Months</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        HIPAA-compliant telemedicine platform with video consultations, EHR integration, and
+                        prescription management.
+                    </p>
+                    <div class="tech-stack-compact">
+                        <span class="tech-badge-small">React</span>
+                        <span class="tech-badge-small">Python/Django</span>
+                        <span class="tech-badge-small">PostgreSQL</span>
+                        <span class="tech-badge-small">WebRTC</span>
+                    </div>
+                    <button class="view-details-btn">
+                        <i class="fas fa-search"></i> View Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project 6: Real Estate Platform -->
+            <div class="project-card glass" data-category="fullstack ecommerce" data-project="6">
+                <div class="project-image-container">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"
+                        alt="Real Estate Platform" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Real Estate</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Real Estate Marketplace</h3>
+                        <div class="project-meta">
+                            <span class="project-meta-item"><i class="far fa-calendar"></i> 2023</span>
+                            <span class="project-meta-item"><i class="far fa-clock"></i> 4 Months</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Property listing platform with virtual tours, mortgage calculator, and AI-powered property
+                        recommendations.
+                    </p>
+                    <div class="tech-stack-compact">
+                        <span class="tech-badge-small">Next.js</span>
+                        <span class="tech-badge-small">NestJS</span>
+                        <span class="tech-badge-small">MongoDB</span>
+                        <span class="tech-badge-small">Mapbox</span>
+                    </div>
+                    <button class="view-details-btn">
+                        <i class="fas fa-search"></i> View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Project Modal - Single Column Layout -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modal-title" class="modal-title">Project Title</h2>
+                    <div id="modal-subtitle" class="modal-subtitle">
+                        <span><i class="far fa-calendar"></i> 2024</span>
+                        <span><i class="far fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-user"></i> Full Stack Developer</span>
+                    </div>
+                </div>
+                <button id="close-modal" class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Main Image -->
+                <div class="modal-image-container">
+                    <img id="modal-main-image" src="" alt="Project Image" class="modal-main-image">
+                </div>
+
+                <!-- Gallery -->
+                <div class="modal-image-gallery">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                        alt="Screenshot 1" class="gallery-thumb">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                        alt="Screenshot 2" class="gallery-thumb">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                        alt="Screenshot 3" class="gallery-thumb">
+                </div>
+
+                <!-- Challenge Section -->
+                <div class="modal-section glass">
+                    <h3 class="section-title"><i class="fas fa-exclamation-circle"></i> The Challenge</h3>
+                    <p id="modal-challenge" style="color: var(--secondary-color); line-height: 1.6;">
+                        Loading challenge description...
+                    </p>
+                </div>
+
+                <!-- Role Section -->
+                <div class="modal-section glass">
+                    <h3 class="section-title"><i class="fas fa-tasks"></i> My Role</h3>
+                    <div id="modal-role" style="color: var(--secondary-color);">
+                        <ul style="margin-left: 20px;">
+                            <li>Loading role details...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Technologies Section -->
+                <div class="modal-section glass">
+                    <h3 class="section-title"><i class="fas fa-code"></i> Technologies Used</h3>
+                    <div id="modal-tech" class="tech-stack-modal">
+                        <!-- Tech badges will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Outcomes Section -->
+                <div class="modal-section glass">
+                    <h3 class="section-title"><i class="fas fa-chart-line"></i> Key Outcomes</h3>
+                    <div id="modal-outcomes" class="outcome-metrics">
+                        <!-- Metrics will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Key Learnings Section -->
+                <div class="modal-section glass">
+                    <h3 class="section-title"><i class="fas fa-lightbulb"></i> Key Learnings</h3>
+                    <p id="modal-learnings" style="color: var(--secondary-color); line-height: 1.6;">
+                        Loading key learnings...
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="modal-actions">
+                    <a id="modal-live-link" href="#" target="_blank" class="btn primary-btn modal-live-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a id="modal-github-link" href="#" target="_blank" class="btn secondary-btn modal-github-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Home -->
+    <div class="back-home">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer glass">
+        <div class="container">
+            <p>© 2025 Jacob Manuel. All rights reserved. | Designed & Developed with ♡</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--secondary-color);">
+                <a href="mailto:jacobmanuel.website@gmail.com"
+                    style="color: var(--accent-color); text-decoration: none;">
+                    jacobmanuel.website@gmail.com
+                </a> |
+                <a href="tel:+1234567890" style="color: var(--accent-color); text-decoration: none;">
+                    +1 234 567 890
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Project Data
+        const projects = {
+            1: {
+                title: "Modern E-commerce Platform",
+                year: "2024",
+                duration: "3 Months",
+                role: "Full Stack Developer",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+                challenge: "The client needed to migrate from a legacy system to a modern platform that could handle seasonal traffic spikes, reduce cart abandonment by 40%, and improve mobile conversion rates by 25%.",
+                roleDetails: [
+                    "Architected the entire application using microservices",
+                    "Implemented real-time inventory management system",
+                    "Developed secure payment gateway integration",
+                    "Built responsive UI with React and optimized for mobile",
+                    "Set up CI/CD pipeline and deployment infrastructure"
+                ],
+                technologies: ["React 18", "Node.js", "MongoDB", "AWS", "Redis", "Stripe API", "PWA", "Google Analytics"],
+                outcomes: [
+                    { value: "45%", label: "Increase in Conversions" },
+                    { value: "2.1s", label: "Avg. Page Load Time" },
+                    { value: "99.9%", label: "System Uptime" },
+                    { value: "$1.2M", label: "Revenue Generated" }
+                ],
+                learnings: "Implemented advanced caching strategies that reduced database load by 70%. Learned to optimize React component rendering for better performance. Gained experience in implementing real-time features using WebSockets.",
+                liveLink: "https://demo-ecommerce.jacobmanuel.com",
+                githubLink: "https://github.com/jacobmanuel/ecommerce-platform"
+            },
+            2: {
+                title: "AI-Powered Fitness Platform",
+                year: "2024",
+                duration: "4 Months",
+                role: "Lead Developer",
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+                challenge: "Create an engaging mobile experience that could accurately track exercises without wearable devices, provide personalized recommendations, and maintain user engagement with a 30% higher retention rate than competitors.",
+                roleDetails: [
+                    "Developed real-time pose estimation using TensorFlow.js",
+                    "Built progressive web app with offline capabilities",
+                    "Implemented ML algorithms for personalized workout recommendations",
+                    "Created data visualization dashboard for progress tracking",
+                    "Integrated with health APIs (Apple Health, Google Fit)"
+                ],
+                technologies: ["React Native", "TensorFlow.js", "D3.js", "Firebase", "Cloud Functions", "MediaPipe", "PostgreSQL"],
+                outcomes: [
+                    { value: "85%", label: "Exercise Accuracy" },
+                    { value: "40%", label: "Higher Retention" },
+                    { value: "4.8★", label: "App Store Rating" },
+                    { value: "50K+", label: "Active Users" }
+                ],
+                learnings: "Mastered real-time pose estimation with TensorFlow.js. Learned to optimize mobile app performance for better battery life. Gained expertise in health data privacy and security compliance.",
+                liveLink: "https://play.google.com/store/apps/details?id=com.fitnessapp",
+                githubLink: "https://github.com/jacobmanuel/fitness-app"
+            },
+            3: {
+                title: "Real-time Financial Analytics Dashboard",
+                year: "2023",
+                duration: "2 Months",
+                role: "Frontend Lead",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+                challenge: "The client needed to consolidate data from 15+ sources into a single dashboard, reduce report generation time from hours to minutes, and provide real-time alerts for market anomalies.",
+                roleDetails: [
+                    "Designed and implemented responsive dashboard UI",
+                    "Integrated real-time data streams using WebSockets",
+                    "Created complex data visualizations with Chart.js",
+                    "Built automated report generation system",
+                    "Implemented role-based access control",
+                    "Optimized performance for handling large datasets"
+                ],
+                technologies: ["Vue.js", "Chart.js", "FastAPI", "PostgreSQL", "WebSocket", "Docker", "PDFKit"],
+                outcomes: [
+                    { value: "95%", label: "Faster Reporting" },
+                    { value: "60%", label: "Time Saved" },
+                    { value: "99.99%", label: "Data Accuracy" },
+                    { value: "$500K", label: "Cost Savings" }
+                ],
+                learnings: "Deepened knowledge of real-time data visualization with WebSockets. Learned to handle large datasets efficiently in the browser. Gained experience in financial data security and compliance.",
+                liveLink: "https://demo-finance.jacobmanuel.com",
+                githubLink: "https://github.com/jacobmanuel/finance-dashboard"
+            },
+            4: {
+                title: "Collaborative Project Management Platform",
+                year: "2023",
+                duration: "5 Months",
+                role: "Full Stack Developer",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+                challenge: "Replace multiple disconnected tools with a unified platform that could support agile workflows, provide real-time updates to remote teams, and integrate with existing development ecosystems.",
+                roleDetails: [
+                    "Implemented real-time collaboration using Socket.io",
+                    "Built interactive Gantt chart component from scratch",
+                    "Developed RESTful APIs with comprehensive documentation",
+                    "Created automated testing suite with 95% coverage",
+                    "Integrated third-party APIs (GitHub, Slack, JIRA)",
+                    "Implemented role-based permissions system"
+                ],
+                technologies: ["Angular", "Express.js", "MySQL", "Socket.io", "Docker", "Jest", "GitHub API"],
+                outcomes: [
+                    { value: "3.5x", label: "Productivity Increase" },
+                    { value: "50%", label: "Meeting Reduction" },
+                    { value: "200+", label: "Teams Using" },
+                    { value: "4.9★", label: "User Satisfaction" }
+                ],
+                learnings: "Mastered real-time collaboration technologies. Learned to build complex interactive components from scratch. Gained expertise in API design and third-party integrations.",
+                liveLink: "https://pm-tool.jacobmanuel.com",
+                githubLink: "https://github.com/jacobmanuel/project-management"
+            },
+            5: {
+                title: "Telemedicine Platform",
+                year: "2023",
+                duration: "6 Months",
+                role: "Full Stack Developer",
+                image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+                challenge: "Build a HIPAA-compliant telemedicine solution that could handle video consultations, integrate with existing EHR systems, and provide secure prescription management.",
+                roleDetails: [
+                    "Implemented WebRTC for secure video consultations",
+                    "Built HIPAA-compliant data storage and encryption",
+                    "Integrated with major EHR systems via HL7/FHIR",
+                    "Developed prescription management with e-prescribing",
+                    "Created patient portal with appointment scheduling",
+                    "Implemented real-time chat and file sharing"
+                ],
+                technologies: ["React", "Python/Django", "PostgreSQL", "WebRTC", "Redis", "Docker", "AWS"],
+                outcomes: [
+                    { value: "80%", label: "Patient Satisfaction" },
+                    { value: "65%", label: "Reduced Wait Times" },
+                    { value: "10K+", label: "Monthly Consultations" },
+                    { value: "99.5%", label: "System Reliability" }
+                ],
+                learnings: "Gained deep understanding of healthcare compliance (HIPAA). Mastered real-time video communication with WebRTC. Learned to handle sensitive medical data with utmost security.",
+                liveLink: "https://telemed.jacobmanuel.com",
+                githubLink: "https://github.com/jacobmanuel/telemedicine-platform"
+            },
+            6: {
+                title: "Real Estate Marketplace",
+                year: "2023",
+                duration: "4 Months",
+                role: "Full Stack Developer",
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+                challenge: "Create a comprehensive real estate platform with virtual property tours, accurate mortgage calculations, and AI-powered property matching for users.",
+                roleDetails: [
+                    "Implemented 360° virtual tour functionality",
+                    "Built mortgage calculator with real-time rates",
+                    "Developed AI-based property recommendation engine",
+                    "Created agent dashboard with lead management",
+                    "Integrated with MLS and property APIs",
+                    "Built secure document upload and e-signature"
+                ],
+                technologies: ["Next.js", "NestJS", "MongoDB", "Mapbox", "TensorFlow", "Stripe", "AWS S3"],
+                outcomes: [
+                    { value: "300%", label: "Leads Generated" },
+                    { value: "2.5x", label: "User Engagement" },
+                    { value: "40%", label: "Faster Sales Cycle" },
+                    { value: "$4.5M", label: "Property Sales" }
+                ],
+                learnings: "Mastered geospatial data handling with Mapbox. Learned to implement AI recommendation systems. Gained experience in real estate transaction workflows and security.",
+                liveLink: "https://realestate.jacobmanuel.com",
+                githubLink: "https://github.com/jacobmanuel/real-estate-platform"
+            }
+        };
+
+        // DOM Elements
+        const modal = document.getElementById('project-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+        const modalMainImage = document.getElementById('modal-main-image');
+        const modalChallenge = document.getElementById('modal-challenge');
+        const modalRole = document.getElementById('modal-role');
+        const modalTech = document.getElementById('modal-tech');
+        const modalOutcomes = document.getElementById('modal-outcomes');
+        const modalLearnings = document.getElementById('modal-learnings');
+        const modalLiveLink = document.getElementById('modal-live-link');
+        const modalGithubLink = document.getElementById('modal-github-link');
+        const closeModalBtn = document.getElementById('close-modal');
+        const projectCards = document.querySelectorAll('.project-card');
+        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const themeCheckbox = document.getElementById('theme-checkbox');
+        const body = document.body;
+
+        // Mobile Navigation Toggle
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Theme Toggle
+        if (localStorage.getItem('dark-mode') === 'true') {
+            themeCheckbox.checked = true;
+            body.classList.add('dark-mode');
+        }
+
+        themeCheckbox.addEventListener('change', () => {
+            body.classList.toggle('dark-mode', themeCheckbox.checked);
+            localStorage.setItem('dark-mode', themeCheckbox.checked);
+
+            // Trigger animation refresh on theme change
+            document.querySelectorAll('.circle').forEach(circle => {
+                circle.style.animation = 'none';
+                setTimeout(() => {
+                    circle.style.animation = '';
+                }, 10);
+            });
+        });
+
+        // Project Filtering
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
+                        card.style.display = 'flex';
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Open Modal Function
+        function openModal(projectId) {
+            const project = projects[projectId];
+
+            // Update modal content
+            modalTitle.textContent = project.title;
+            modalSubtitle.innerHTML = `
+                <span><i class="far fa-calendar"></i> ${project.year}</span>
+                <span><i class="far fa-clock"></i> ${project.duration}</span>
+                <span><i class="fas fa-user"></i> ${project.role}</span>
+            `;
+
+            modalMainImage.src = project.image;
+            modalChallenge.textContent = project.challenge;
+            modalLearnings.textContent = project.learnings;
+
+            // Update role details
+            modalRole.innerHTML = '<ul style="margin-left: 20px;">' +
+                project.roleDetails.map(detail => `<li>${detail}</li>`).join('') +
+                '</ul>';
+
+            // Update technologies
+            modalTech.innerHTML = project.technologies.map(tech =>
+                `<span class="tech-badge-modal"><i class="fas fa-code"></i> ${tech}</span>`
+            ).join('');
+
+            // Update outcomes
+            modalOutcomes.innerHTML = project.outcomes.map(outcome => `
+                <div class="metric-card">
+                    <div class="metric-value">${outcome.value}</div>
+                    <div class="metric-label">${outcome.label}</div>
+                </div>
+            `).join('');
+
+            // Update links
+            modalLiveLink.href = project.liveLink;
+            modalGithubLink.href = project.githubLink;
+
+            // Show modal
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal Function
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event Listeners for Opening Modal
+        projectCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.view-details-btn')) {
+                    const projectId = card.getAttribute('data-project');
+                    openModal(projectId);
+                }
+            });
+        });
+
+        viewDetailsBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const card = btn.closest('.project-card');
+                const projectId = card.getAttribute('data-project');
+                openModal(projectId);
+            });
+        });
+
+        // Event Listeners for Closing Modal
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.top = '10px';
+                navbar.style.backdropFilter = 'blur(15px)';
+            } else {
+                navbar.style.top = '20px';
+                navbar.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Gallery thumbnail click handler
+        document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                modalMainImage.src = thumb.src;
+            });
+        });
+
+        // Add hover animation to project cards
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+
+</html>
