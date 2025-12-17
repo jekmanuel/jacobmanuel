@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Manuel | Web Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="light-mode">
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <!-- Logo and Site Name -->
+            <a href="index.html" class="logo">
+                <div class="logo-wrapper">
+                    <div class="logo-icon">
+                        <img src="assets/logo-circle-no-bg.png" alt="logo">
+                    </div>
+                   
+                </div>
+            </a>
+
+           <div class="nav-center-container">
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li class="separator"></li>
+                    <li><a href="#contact" class="nav-link contact-nav">Contact</a></li>
+                    
+                </ul>
+            </div>
+
+            <!-- Desktop Theme Switch -->
+            <div class="theme-switch-wrapper">
+                <span class="theme-icon">⏾</span>
+                <label class="theme-switch" for="theme-checkbox">
+                    <input type="checkbox" id="theme-checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span class="theme-icon">☀︎</span>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home/Hero Section -->
+        <section id="home" class="section hero">
+            <div class="hero-content glass">
+                <div class="hero-text">
+                    <h4 class="greeting">Hello, I'm</h4>
+                    <h1 class="hero-title">Jacob <span class="highlight">Manuel</span></h1>
+                    <h2 class="hero-subtitle">Full Stack Web Developer</h2>
+                    <p class="hero-description">I create beautiful, functional websites with modern technologies and
+                        responsive design. Passionate about clean code and user experience.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn primary-btn">View My Work</a>
+                        <a href="#contact" class="btn secondary-btn">Hire Me</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-wrapper glass">
+                        <div class="code-animation">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <img src="assets/hero-img.jpg" alt="Developer portrait">
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span></span>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+                <p class="section-subtitle">Recent work and creative solutions</p>
+            </div>
+
+            <div class="project-tabs">
+                <button class="tab-btn active" data-tab="all">All Projects</button>
+                <button class="tab-btn" data-tab="web">Web Apps</button>
+                <button class="tab-btn" data-tab="mobile">Mobile</button>
+                <button class="tab-btn" data-tab="design">UI/UX</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project items will be populated by JavaScript -->
+            </div>
+
+            <div class="section-footer">
+                <a href="projects.html" class="btn outline-btn">
+                    See All Projects <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Project Modal -->
+            <div id="project-modal" class="modal">
+                <div class="modal-content glass">
+                    <span class="close-modal">&times;</span>
+                    <div class="modal-body">
+                        <div class="modal-image">
+                            <img id="modal-img" src="" alt="Project Image">
+                        </div>
+                        <div class="modal-info">
+                            <h3 id="modal-title"></h3>
+                            <p id="modal-category" class="category-tag"></p>
+                            <p id="modal-description"></p>
+                            <div class="modal-tech">
+                                <h4>Technologies Used:</h4>
+                                <div id="modal-tech-list" class="tech-list"></div>
+                            </div>
+                            <div class="modal-links">
+                                <a id="modal-live-link" href="#" target="_blank" class="btn primary-btn">Live Demo</a>
+                                <a id="modal-code-link" href="#" target="_blank" class="btn outline-btn">View Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section services">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="highlight">Services</span></h2>
+                <p class="section-subtitle">Comprehensive digital solutions for your business</p>
+            </div>
+
+            <div class="services-container">
+                <!-- Data Entry Service -->
+                <div class="service-card glass">
+                    <div class="service-image-main">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            alt="Data Entry Services">
+                        <div class="service-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-info">
+                        <h3 class="service-title">Data Entry</h3>
+                        <p class="service-description">Accurate and efficient data processing, database management, and
+                            analysis services to keep your information organized.</p>
+                        <ul class="service-features">
+                            <li>Data Processing</li>
+                            <li>Database Management</li>
+                            <li>Data Analysis</li>
+                            <li>Excel Automation</li>
+                        </ul>
+                        <a href="#contact" class="btn service-btn">
+                            Get Started <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Branding Service -->
+                <div class="service-card glass">
+                    <div class="service-image-main">
+                        <img src="https://images.unsplash.com/photo-1567446537711-4302c76e0b8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            alt="Branding Services">
+                        <div class="service-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-info">
+                        <h3 class="service-title">Branding</h3>
+                        <p class="service-description">Comprehensive branding solutions to establish your unique
+                            presence and connect with your audience.</p>
+                        <ul class="service-features">
+                            <li>Logo Design</li>
+                            <li>Brand Identity</li>
+                            <li>Style Guides</li>
+                            <li>Marketing Collateral</li>
+                        </ul>
+                        <a href="#contact" class="btn service-btn">
+                            Get Started <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Web Design Service -->
+                <div class="service-card glass">
+                    <div class="service-image-main">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80"
+                            alt="Web Design Services">
+                        <div class="service-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-info">
+                        <h3 class="service-title">Web Design</h3>
+                        <p class="service-description">Modern, responsive website design and development focused on user
+                            experience and performance.</p>
+                        <ul class="service-features">
+                            <li>Responsive Design</li>
+                            <li>UI/UX Design</li>
+                            <li>Frontend Development</li>
+                            <li>E-commerce Solutions</li>
+                        </ul>
+                        <a href="#contact" class="btn service-btn">
+                            Get Started <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- NEW: Technical Support Service -->
+                <div class="service-card glass">
+                    <div class="service-image-main">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            alt="Technical Support Services">
+                        <div class="service-overlay">
+                            <div class="service-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-info">
+                        <h3 class="service-title">Technical Support</h3>
+                        <p class="service-description">Reliable technical support and maintenance services to ensure
+                            your digital assets run smoothly.</p>
+                        <ul class="service-features">
+                            <li>Website Maintenance</li>
+                            <li>Bug Fixing & Debugging</li>
+                            <li>Performance Monitoring</li>
+                            <li>Security Updates</li>
+                        </ul>
+                        <a href="#contact" class="btn service-btn">
+                            Get Support <i class="fas fa-headset"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="section-header">
+                <h2 class="section-title">About <span class="highlight">Me</span></h2>
+                <p class="section-subtitle">Get to know the developer</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-image glass">
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80"
+                        alt="About me">
+                </div>
+                <div class="about-text glass">
+                    <h3>Full Stack Developer with 5+ Years Experience</h3>
+                    <p>I'm a passionate web developer specializing in creating modern, responsive websites and web
+                        applications. I love turning complex problems into simple, beautiful designs.</p>
+                    <p>My expertise includes JavaScript, React, Node.js, and modern CSS frameworks. I believe in writing
+                        clean, efficient code and creating intuitive user experiences.</p>
+                    <div class="skills">
+                        <div class="skill">
+                            <span class="skill-name">Frontend Development</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span class="skill-name">Backend Development</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span class="skill-name">UI/UX Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="about.html" class="btn outline-btn">
+                        See More About Me <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+                <p class="section-subtitle">Let's work together</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info glass">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>jacobmanuel.website@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 234 567 890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Bataan, PH</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="contact-form glass">
+                    <h3>Send Me a Message</h3>
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <div id="form-message" class="form-message"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer glass">
+        <p>All rights reserved &copy; 2025 - Designed by Jacob Manuel</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
